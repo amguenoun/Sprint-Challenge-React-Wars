@@ -1,9 +1,25 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import axios from "axios";
 import { Card, Icon } from 'semantic-ui-react'
 
 
 const CardExampleExtraContent = (props) => {
-    const desc = `${props.name} is a ${props.height}cm and ${props.mass}kg person`;
+    const [species, setSpecies] = useState("");
+    const [home, setHome] = useState("");
+
+    useEffect(() => {
+        axios.get(props.species[0])
+            .then(response => setSpecies(response.data.name))
+            .catch(error => console.log("Error", error));
+    }, []);
+
+    useEffect(() => {
+        axios.get(props.home)
+            .then(response => setHome(response.data.name))
+            .catch(error => console.log("Error", error));
+    }, []);
+
+    const desc = `${props.name} is a ${props.height}cm and ${props.mass}kg ${species} from ${home}`;
 
     return (
         <Card>
@@ -11,7 +27,7 @@ const CardExampleExtraContent = (props) => {
             <Card.Content description={desc} />
             <Card.Content extra>
                 <Icon name='user' />
-                {props.mass} Vehicles and Starships
+                {props.transport} Vehicles and Starships
     </Card.Content>
         </Card>
     )

@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react';
 import axios from "axios";
 import styled from 'styled-components';
 import CharacterCard from "./components/CharacterCard";
-import { Container, Button } from 'semantic-ui-react'
+import ButtonMenu from "./components/ButtonMenu";
+import { Container } from 'semantic-ui-react'
 import './App.css';
 
 const App = () => {
@@ -30,11 +31,14 @@ const App = () => {
     justify-content: space-around !important;
   `;
 
+  const handleLinks = (url) => {
+    setLink(url);
+  }
+
   return (
     <div className="App">
       <h1 className="Header">React Wars</h1>
-      <Button primary onClick={() => { setLink(peopleData.previous) }}>Last Page</Button>
-      <Button primary onClick={() => { setLink(peopleData.next) }}>Next Page</Button>
+      <ButtonMenu linkHandler={handleLinks} data={peopleData} />
       <StyledContainer>
         {peopleList.map((item, iterator) => {
           const transport = item.vehicles.length + item.starships.length;

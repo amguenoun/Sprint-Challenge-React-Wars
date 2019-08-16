@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from "axios";
+import styled from 'styled-components';
 import CharacterCard from "./components/CharacterCard";
 import { Container } from 'semantic-ui-react'
 import './App.css';
@@ -20,14 +21,21 @@ const App = () => {
 
   console.log(peopleList);
 
+  const StyledContainer = styled(Container)`
+    display: flex !important;
+    flex-wrap: wrap !important;
+    justify-content: space-around !important;
+  `;
+
   return (
     <div className="App">
       <h1 className="Header">React Wars</h1>
-      <Container>
+      <StyledContainer>
         {peopleList.map((item, iterator) => {
-          return <CharacterCard name={item.name} birth={item.birth_year} height={item.height} mass={item.mass} key={iterator} />
+          return <CharacterCard name={item.name} birth={item.birth_year}
+            height={item.height} mass={item.mass} key={iterator} />
         })}
-      </Container>
+      </StyledContainer>
     </div>
   );
 }

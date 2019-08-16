@@ -44,7 +44,7 @@ const App = () => {
           const transport = item.vehicles.length + item.starships.length;
           return <CharacterCard name={item.name} birth={item.birth_year}
             height={item.height} mass={item.mass} key={iterator}
-            species={item.species} home={item.homeworld} transport={transport} />
+            species={item.species} home={item.homeworld} transport={transport} gender={item.gender} />
         })}
       </StyledContainer>
     </div>

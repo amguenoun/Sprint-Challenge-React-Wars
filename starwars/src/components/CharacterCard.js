@@ -26,7 +26,7 @@ const CardExampleExtraContent = (props) => {
             <Card.Content header={props.name} />
             <Card.Content description={desc} />
             <Card.Content extra>
-                <Icon name='user' />
+                <Icon name='plane' />
                 {props.transport} Vehicles and Starships
     </Card.Content>
         </Card>

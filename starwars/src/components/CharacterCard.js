@@ -11,13 +11,13 @@ const CardExampleExtraContent = (props) => {
         axios.get(props.species[0])
             .then(response => setSpecies(response.data.name))
             .catch(error => console.log("Error", error));
-    }, []);
+    }, [props.species]);
 
     useEffect(() => {
         axios.get(props.home)
             .then(response => setHome(response.data.name))
             .catch(error => console.log("Error", error));
-    }, []);
+    }, [props.home]);
 
     const desc = `${props.name} is a ${props.height}cm and ${props.mass}kg ${species} from ${home}`;
 
